@@ -14,47 +14,30 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.myTodoListData) {
-      this.setState({
-        todos: JSON.parse(localStorage.myTodoListData)
-      })
-    } else {
-      axios
-        .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
-        .then(response => {
-          this.setState({
-            todos: response.data
-          });
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then(response => {
+        this.setState({
+          todos: response.data
         });
-    }
+      });
   }
-
-  storeData = () => {
-    localStorage.myTodoListData = JSON.stringify(this.state.todos);
-  };
   // Toggle Complete
   toggleComplete = id => {
     this.setState({
       todos: this.state.todos.map(todo => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
-          toast.info(
-            todo.completed ? "Marked as Done" : "Marked as not complete"
-          );
+          toast.info(todo.completed ? "Marked as Done" : "Marked as not complete")
         }
         return todo;
       })
     });
-    localStorage.myTodoListData = JSON.stringify(this.state.todos);
   };
 
   deleteTodo = id => {
     this.setState({
       todos: [...this.state.todos.filter(todo => todo.id !== id)]
-
-    })
-    .then(() => {
-      localStorage.myTodoListData = JSON.stringify(this.state.todos);
     });
     toast.info("Todo Deleted");
   };
@@ -73,9 +56,6 @@ export class App extends Component {
     });
     this.setState({
       todos: this.state.todos.concat(newTodos)
-    })
-    .then(() => {
-      localStorage.myTodoListData = JSON.stringify(this.state.todos);
     });
     toast.info("Todo Added");
   };
