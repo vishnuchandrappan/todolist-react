@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uuid from 'uuid';
 import AddTodo from "./components/AddTodo.js";
 import Header from "./components/layouts/Header";
 import Todos from "./components/Todos";
@@ -8,22 +9,21 @@ export class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title: "Learn Rails",
         completed: false
       },
       {
-        id: 2,
+        id: uuid.v4(),
         title: "Learn React",
         completed: true
       },
       {
-        id: 3,
+        id: uuid.v4(),
         title: "Learn Redux",
         completed: false
       }
-    ],
-    lastId: 4
+    ]
   };
 
   // Toggle Complete
@@ -47,20 +47,17 @@ export class App extends Component {
   addTodo = title => {
     let newTitles = title.split(",");
     let newTodos = [];
-    let id = this.state.lastId;
     newTitles.forEach(newTitle => {
       if (newTitle.trim()) {
         newTodos.push({
-          id,
+          id:uuid.v4(),
           title: newTitle,
           completed: false
         });
-        id = id + 1;
       }
     });
     this.setState({
-      todos: this.state.todos.concat(newTodos),
-      lastId: id
+      todos: this.state.todos.concat(newTodos)
     });
   };
 
