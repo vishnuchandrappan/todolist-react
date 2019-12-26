@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-export default function Header() {
-    return (
-        <div className="navbar">
+export class Header extends Component {
+    navToggle = () => {
+        document.querySelector('.burger').classList.toggle('burger-active');
+        document.querySelector('.nav-links').classList.toggle('nav-active');
+    }
+
+    render() {
+        return (
+            <div className="navbar">
             <nav>
                 <div className="logo">
                     <h1>My Todo List</h1>
                 </div>
-                <div className="burger">
+                <div
+                    className="burger"
+                    onClick={this.navToggle}>
                     <span></span>
                     <span></span>
                     <span></span>
@@ -19,5 +27,8 @@ export default function Header() {
                 </ul>
             </nav>
         </div>
-    )
+        )
+    }
 }
+
+export default Header

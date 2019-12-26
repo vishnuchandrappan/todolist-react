@@ -46,8 +46,6 @@ const addTodoStyle = {
   alignItems: "center",
   margin: "10px 0",
   borderRadius: "5px",
-  position:"sticky",
-  top: "9vh",
 };
 
 const formStyle = {
