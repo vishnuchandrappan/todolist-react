@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from "react";
 import uuid from 'uuid';
 import AddTodo from "./components/AddTodo.js";
@@ -7,25 +8,17 @@ import "./styles/App.css";
 
 export class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: "Learn Rails",
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: "Learn React",
-        completed: true
-      },
-      {
-        id: uuid.v4(),
-        title: "Learn Redux",
-        completed: false
-      }
-    ]
+    todos: []
   };
 
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then((response) => {
+        this.setState({
+          todos: response.data
+        });
+      })
+  }
   // Toggle Complete
   toggleComplete = id => {
     this.setState({

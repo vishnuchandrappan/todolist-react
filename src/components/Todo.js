@@ -23,10 +23,14 @@ class Todo extends Component {
             checked={completed}
             onChange={this.props.toggleComplete.bind(this, id)}
           />
-          <input style={this.getStyle()} type="text" readOnly value={title}/>
+          <span
+            style={this.getStyle()}
+            onClick={this.props.toggleComplete.bind(this, id)}
+          >
+            {title}
+          </span>
         </div>
         <div className="right">
-          <button onClick={this.props.deleteTodo.bind(this, id)}> edit </button>
           <button onClick={this.props.deleteTodo.bind(this, id)}> X </button>
         </div>
       </div>
