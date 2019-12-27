@@ -29,7 +29,7 @@ export class AddTodo extends Component {
             type="text"
             value={this.state.title}
             style={inputStyle}
-            placeholder = "Add todo..."
+            placeholder = "Add todo eg: foo, bar, baz..."
             onChange = {this.change}
             />
           <button>Add</button>
