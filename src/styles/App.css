@@ -46,7 +46,7 @@ nav ul li{
 
 .container{
     max-width: 50%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 span{
@@ -145,4 +145,31 @@ input{
     .burger-active span:nth-of-type(3){
         transform: rotate(-45deg) translate(4px,-6px);
     }
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover{
+    animation: pulse 1s ease infinite alternate;
+}
+
+@keyframes pulse{
+    from{
+        opacity: 0.3;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.container h1{
+    border-bottom:solid 1px gray;
+}
+
+p{
+    margin: 10px 0px;
+    text-align: justify;
 }
