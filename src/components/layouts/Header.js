@@ -5,6 +5,10 @@ export class Header extends Component {
   navToggle = () => {
     document.querySelector(".burger").classList.toggle("burger-active");
     document.querySelector(".nav-links").classList.toggle("nav-active");
+    window.addEventListener("click", () => {
+          document.querySelector(".burger").classList.remove("burger-active");
+          document.querySelector(".nav-links").classList.remove("nav-active");
+    });
   };
 
   render() {
